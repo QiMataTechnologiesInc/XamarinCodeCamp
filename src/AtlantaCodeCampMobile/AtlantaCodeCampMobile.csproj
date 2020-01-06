@@ -1,0 +1,120 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Data\ecommerce.json" />
+    <None Remove="Images\NoInternet.svg" />
+    <None Remove="Images\SomethingWentWrong.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\ecommerce.json" />
+    <EmbeddedResource Include="Images\NoInternet.svg" />
+    <EmbeddedResource Include="Images\SomethingWentWrong.svg" />
+  </ItemGroup>
+
+<ItemGroup>
+<PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
+<PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+<PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.1.1" />
+<PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.SfMaps" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="17.4.0.39" />
+<PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
+<PackageReference Include="Syncfusion.Xamarin.Core" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.SfSchedule" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.SfRating" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.SfPullToRefresh" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.Cards" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.Cards" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.Core" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.SfBadgeView" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.Core" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.SfAutoComplete" Version="17.4.0.39" />
+<PackageReference Include="Syncfusion.Xamarin.Expander " Version="17.4.0.39" />
+</ItemGroup>
+
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
+      <DependentUpon>*.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
+      <DependentUpon>*.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Themes\LightTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AboutUs\AboutUsWithCardsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Article\ArticleWithCommentsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Catalog\ArticleListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Catalog\CatalogListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Catalog\CatalogTilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Catalog\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ContactUs\ContactUsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ErrorandEmpty\NoInternetConnectionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ErrorandEmpty\SomethingWentWrongPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Forms\SimpleEmailEntry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Forms\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Forms\TabbedForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Profile\MasterPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Profile\ProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\ArticleListTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\ProductListTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\ProductTileTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\ReviewTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
