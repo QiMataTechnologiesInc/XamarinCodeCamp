@@ -27,7 +27,7 @@ using Syncfusion.SfRating.XForms.iOS;
 using Syncfusion.SfPullToRefresh.XForms.iOS;
 
 using Syncfusion.ListView.XForms.iOS;
-
+using Syncfusion.SfRotator.iOS;
 using Syncfusion.XForms.iOS.Buttons;
 
 using Syncfusion.XForms.iOS.Border;
@@ -67,7 +67,6 @@ namespace AtlantaCodeCampMobile.iOS
             SfCheckBoxRenderer.Init();
             SfComboBoxRenderer.Init();
             SfTabViewRenderer.Init();
-            
 			SfPdfDocumentViewRenderer.Init(); 
 			
 			

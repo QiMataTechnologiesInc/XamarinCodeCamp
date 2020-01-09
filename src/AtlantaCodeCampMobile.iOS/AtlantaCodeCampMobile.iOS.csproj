@@ -175,4 +175,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\Pin.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\top_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\top_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\top_3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\top_4.jpg" />
+  </ItemGroup>
 </Project>

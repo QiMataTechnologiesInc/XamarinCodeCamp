@@ -9562,7 +9562,19 @@ namespace AtlantaCodeCampMobile.Android
 			public const int tooltip_frame_light = 2131165371;
 			
 			// aapt resource value: 0x7F0700BC
-			public const int Viewmode = 2131165372;
+			public const int top_1 = 2131165372;
+			
+			// aapt resource value: 0x7F0700BD
+			public const int top_2 = 2131165373;
+			
+			// aapt resource value: 0x7F0700BE
+			public const int top_3 = 2131165374;
+			
+			// aapt resource value: 0x7F0700BF
+			public const int top_4 = 2131165375;
+			
+			// aapt resource value: 0x7F0700C0
+			public const int Viewmode = 2131165376;
 			
 			static Drawable()
 			{

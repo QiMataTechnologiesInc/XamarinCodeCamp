@@ -3,14 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfRotator.XForms;assembly=Syncfusion.SfRotator.XForms"
+             xmlns:viewModels="clr-namespace:AtlantaCodeCampMobile.ViewModels;assembly=AtlantaCodeCampMobile"
              mc:Ignorable="d"
              x:Class="AtlantaCodeCampMobile.HomePage"
-             Title="Atlanta Code Camp">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             Shell.NavBarIsVisible="False"
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <viewModels:HomeViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="ImageOverlayLabelStyle">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="Large"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <syncfusion:SfRotator x:Name="Rotator" 
+                                  NavigationDelay="2000" 
+                                  ItemsSource="{Binding RotatorImageViewModels}" 
+                                  SelectedIndex="2"
+                                  NavigationDirection="Horizontal"
+                                  NavigationStripMode="Dots" 
+                                  BackgroundColor="#ececec"
+                                  HeightRequest="400">
+                <syncfusion:SfRotator.ItemTemplate>
+                    <DataTemplate>
+                        <Image Aspect="AspectFill"  Source="{Binding ImageSource}" />
+                    </DataTemplate>
+                </syncfusion:SfRotator.ItemTemplate>
+            </syncfusion:SfRotator>
+            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center" 
+                   Text="{Binding HeaderImageText}" LineBreakMode="WordWrap" Style="{StaticResource ImageOverlayLabelStyle}" />
+        </Grid>
+
+    </StackLayout>
 </ContentPage>

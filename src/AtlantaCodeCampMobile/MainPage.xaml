@@ -27,7 +27,7 @@
             <ShellContent  ContentTemplate="{DataTemplate local:HomePage}" />
         </Tab>
         <Tab Title="Sessions">
-            <ShellContent  ContentTemplate="{DataTemplate catalog:CatalogListPage}" />
+            <ShellContent  ContentTemplate="{DataTemplate catalog:SessionPage}" />
         </Tab>
         <Tab Title="Sponsors">
             <ShellContent  ContentTemplate="{DataTemplate catalog:CatalogListPage}" />
