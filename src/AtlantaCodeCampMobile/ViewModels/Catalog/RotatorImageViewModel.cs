@@ -9,12 +9,9 @@ namespace AtlantaCodeCampMobile.ViewModels.Catalog
     {
         public RotatorImageViewModel(string imageUri)
         {
-            ImageSource = new FileImageSource
-            {
-                File = imageUri
-            };
+            ImageSource = Xamarin.Forms.ImageSource.FromFile(imageUri);
         }
 
-        public FileImageSource ImageSource { get; }
+        public ImageSource ImageSource { get; }
     }
 }

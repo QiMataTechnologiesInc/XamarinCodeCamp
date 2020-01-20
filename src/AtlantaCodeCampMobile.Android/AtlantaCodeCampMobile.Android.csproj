@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -43,7 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtlantaCodeCampMobile\AtlantaCodeCampMobile.csproj">
-      <Project>{2549C2E8-38C9-4C78-BBF2-EC15416A2E9A}</Project>
+      <Project>{FE488CB1-7E78-4763-9F87-D1780A1F4D9D}</Project>
       <Name>AtlantaCodeCampMobile</Name>
     </ProjectReference>
   </ItemGroup>

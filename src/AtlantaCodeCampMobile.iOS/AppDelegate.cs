@@ -41,6 +41,7 @@ using Syncfusion.XForms.iOS.Accordion;
 using Syncfusion.XForms.iOS.Shimmer;
 
 using Syncfusion.XForms.iOS.Core;
+using Syncfusion.SfRotator.XForms.iOS;
 
 namespace AtlantaCodeCampMobile.iOS
 {
@@ -62,6 +63,7 @@ namespace AtlantaCodeCampMobile.iOS
             global::Xamarin.Forms.Forms.Init();
             SfMapsRenderer.Init();
             Core.Init();
+			SfRotatorRenderer.Init();
             SfGradientViewRenderer.Init();
             SfExpanderRenderer.Init();
             SfCheckBoxRenderer.Init();

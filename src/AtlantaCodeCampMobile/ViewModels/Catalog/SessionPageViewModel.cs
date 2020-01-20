@@ -278,7 +278,7 @@ namespace AtlantaCodeCampMobile.ViewModels.Catalog
         /// <param name="attachedObject">The Object</param>
         private void ItemSelected(object attachedObject)
         {
-            // Do something
+            
         }
 
         /// <summary>

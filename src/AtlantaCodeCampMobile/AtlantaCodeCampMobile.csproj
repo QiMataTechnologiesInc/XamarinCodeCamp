@@ -24,6 +24,7 @@
 <PackageReference Include="Syncfusion.Xamarin.SfMaps" Version="17.4.0.39" />
 <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="17.4.0.39" />
 <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="17.4.0.39" />
+<PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
 <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
 <PackageReference Include="Syncfusion.Xamarin.Core" Version="17.4.0.39" />
 <PackageReference Include="Syncfusion.Xamarin.SfSchedule" Version="17.4.0.39" />
@@ -43,6 +44,9 @@
 <PackageReference Include="Syncfusion.Xamarin.Expander " Version="17.4.0.39" />
 </ItemGroup>
 
+<ItemGroup>
+  <Compile Remove="Views\Templates\ProductListTemplate %28copy%29.xaml.cs" />
+</ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
@@ -52,6 +56,14 @@
     </Compile>
     <Compile Update="Views\Catalog\SessionPage.xaml.cs">
       <DependentUpon>SessionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Templates\ProductListTemplate %28copy%29.xaml.cs">
+      <DependentUpon>ProductListTemplate %28copy%29.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Templates\SessionListTemplate.xaml.cs">
+      <DependentUpon>SessionListTemplate.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 
@@ -122,5 +134,14 @@
     <EmbeddedResource Update="Views\Templates\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\ProductListTemplate %28copy%29.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\SessionListTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>
