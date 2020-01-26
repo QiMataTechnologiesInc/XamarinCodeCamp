@@ -1,4 +1,3 @@
-using AtlantaCodeCampMobile.DataService;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
@@ -17,7 +16,7 @@ namespace AtlantaCodeCampMobile.Views.Catalog
         public CatalogTilePage()
         {
             InitializeComponent();
-            this.BindingContext = CatalogDataService.Instance.CatalogPageViewModel;
+            //this.BindingContext = CatalogDataService.Instance.CatalogPageViewModel;
         }
     }
 }

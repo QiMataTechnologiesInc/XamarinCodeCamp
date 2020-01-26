@@ -49,10 +49,8 @@
       <e p="Data" t="Include">
         <e p="ecommerce.json" t="Include" />
       </e>
-      <e p="DataService" t="Include">
-        <e p="CatalogDataService.cs" t="Include" />
-      </e>
       <e p="Helpers" t="Include">
+        <e p="BackgroundTaskHelper.cs" t="Include" />
         <e p="RTLHelper.cs" t="Include" />
       </e>
       <e p="HomePage.xaml" t="Include" />
@@ -80,7 +78,6 @@
           <e p="CodeCampUserViewModel.cs" t="Include" />
         </e>
         <e p="Article.cs" t="Include" />
-        <e p="Category.cs" t="Include" />
         <e p="ContactUs" t="Include">
           <e p="LocationMarker.cs" t="Include" />
         </e>
@@ -106,11 +103,9 @@
         </e>
         <e p="Product.cs" t="Include" />
         <e p="Review.cs" t="Include" />
-        <e p="ScheduleModel.cs" t="Include" />
-        <e p="SpeakerViewModel.cs" t="Include" />
-        <e p="SponsorViewModel.cs" t="Include" />
+        <e p="SpeakerDTO.cs" t="Include" />
+        <e p="SponsorDTO.cs" t="Include" />
         <e p="TalkDTO.cs" t="Include" />
-        <e p="TalkViewModel.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
@@ -170,6 +165,7 @@
         <e p="BaseService.cs" t="Include" />
         <e p="SessionService.cs" t="Include" />
         <e p="SpeakerService.cs" t="Include" />
+        <e p="SponsorService.cs" t="Include" />
       </e>
       <e p="Themes" t="Include">
         <e p="LightTheme.xaml" t="Include" />
@@ -188,10 +184,11 @@
         <e p="BaseViewModel.cs" t="Include" />
         <e p="Catalog" t="Include">
           <e p="ArticleListViewModel.cs" t="Include" />
-          <e p="CatalogPageViewModel.cs" t="Include" />
           <e p="RotatorImageViewModel.cs" t="Include" />
           <e p="SessionPageViewModel.cs" t="Include" />
           <e p="SessionViewModel.cs" t="Include" />
+          <e p="SponsorsViewModel.cs" t="Include" />
+          <e p="SponsorViewModel.cs" t="Include" />
         </e>
         <e p="ContactUs" t="Include">
           <e p="ContactUsViewModel.cs" t="Include" />
@@ -229,6 +226,8 @@
           <e p="CatalogTilePage.xaml.cs" t="Include" />
           <e p="SessionPage.xaml" t="Include" />
           <e p="SessionPage.xaml.cs" t="Include" />
+          <e p="SponsorsPage.xaml" t="Include" />
+          <e p="SponsorsPage.xaml.cs" t="Include" />
           <e p="Styles.xaml" t="Include" />
           <e p="Styles.xaml.cs" t="Include" />
         </e>

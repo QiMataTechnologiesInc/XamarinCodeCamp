@@ -1,10 +1,15 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
+using AtlantaCodeCampMobile.Helpers;
 using Syncfusion.ListView.XForms;
 using AtlantaCodeCampMobile.Models;
+using AtlantaCodeCampMobile.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -15,7 +20,7 @@ namespace AtlantaCodeCampMobile.ViewModels.Catalog
     /// </summary>
     [Preserve(AllMembers = true)]
     [DataContract]
-    public class SessionPageViewModel : BaseViewModel
+    class SessionPageViewModel : BaseViewModel
     {
         #region Fields
 
@@ -37,6 +42,10 @@ namespace AtlantaCodeCampMobile.ViewModels.Catalog
 
         private string cartItemCount;
 
+        private BackgroundTaskHelper _backgroundTaskHelper;
+
+        private SessionService _sessionService;
+
         #endregion
 
         #region Constructor
@@ -46,87 +55,87 @@ namespace AtlantaCodeCampMobile.ViewModels.Catalog
         /// </summary>
         public SessionPageViewModel()
         {
-            this.FilterOptions = new ObservableCollection<Category>
-            {
-                new Category
-                {
-                    Name = "Gender",
-                    SubCategories = new List<string>
-                    {
-                        "Men",
-                        "Women"
-                    }
-                },
-                new Category
-                {
-                    Name = "Brand",
-                    SubCategories = new List<string>
-                    {
-                        "Brand A",
-                        "Brand B"
-                    }
-                },
-                new Category
-                {
-                    Name = "Categories",
-                    SubCategories = new List<string>
-                    {
-                        "Category A",
-                        "Category B"
-                    }
-                },
-                new Category
-                {
-                    Name = "Color",
-                    SubCategories = new List<string>
-                    {
-                        "Maroon",
-                        "Pink"
-                    }
-                },
-                new Category
-                {
-                    Name = "Price",
-                    SubCategories = new List<string>
-                    {
-                        "Above 3000",
-                        "1000 to 3000",
-                        "Below 1000"
-                    }
-                },
-                new Category
-                {
-                    Name = "Size",
-                    SubCategories = new List<string>
-                    {
-                        "S", "M", "L", "XL", "XXL"
-                    }
-                },
-                new Category
-                {
-                    Name = "Patterns",
-                    SubCategories = new List<string>
-                    {
-                        "Pattern 1", "Pattern 2"
-                    }
-                },
-                new Category
-                {
-                    Name = "Offers",
-                    SubCategories = new List<string>
-                    {
-                        "Buy 1 Get 1", "Buy 1 Get 2"
-                    }
-                },
-                new Category
-                {
-                    Name = "Coupons",
-                    SubCategories = new List<string>
-                    {
-                        "Coupon 1", "Coupon 2"
-                    }
-                },
-            };
+            // this.FilterOptions = new ObservableCollection<Category>
+            // {
+            //     new Category
+            //     {
+            //         Name = "Gender",
+            //         SubCategories = new List<string>
+            //         {
+            //             "Men",
+            //             "Women"
+            //         }
+            //     },
+            //     new Category
+            //     {
+            //         Name = "Brand",
+            //         SubCategories = new List<string>
+            //         {
+            //             "Brand A",
+            //             "Brand B"
+            //         }
+            //     },
+            //     new Category
+            //     {
+            //         Name = "Categories",
+            //         SubCategories = new List<string>
+            //         {
+            //             "Category A",
+            //             "Category B"
+            //         }
+            //     },
+            //     new Category
+            //     {
+            //         Name = "Color",
+            //         SubCategories = new List<string>
+            //         {
+            //             "Maroon",
+            //             "Pink"
+            //         }
+            //     },
+            //     new Category
+            //     {
+            //         Name = "Price",
+            //         SubCategories = new List<string>
+            //         {
+            //             "Above 3000",
+            //             "1000 to 3000",
+            //             "Below 1000"
+            //         }
+            //     },
+            //     new Category
+            //     {
+            //         Name = "Size",
+            //         SubCategories = new List<string>
+            //         {
+            //             "S", "M", "L", "XL", "XXL"
+            //         }
+            //     },
+            //     new Category
+            //     {
+            //         Name = "Patterns",
+            //         SubCategories = new List<string>
+            //         {
+            //             "Pattern 1", "Pattern 2"
+            //         }
+            //     },
+            //     new Category
+            //     {
+            //         Name = "Offers",
+            //         SubCategories = new List<string>
+            //         {
+            //             "Buy 1 Get 1", "Buy 1 Get 2"
+            //         }
+            //     },
+            //     new Category
+            //     {
+            //         Name = "Coupons",
+            //         SubCategories = new List<string>
+            //         {
+            //             "Coupon 1", "Coupon 2"
+            //         }
+            //     },
+            // };
 
             this.SortOptions = new ObservableCollection<string>
             {
@@ -136,6 +145,10 @@ namespace AtlantaCodeCampMobile.ViewModels.Catalog
                 "Popularity",
                 "Discount"
             };
+            
+            Sessions = new ObservableCollection<SessionViewModel>();
+            _backgroundTaskHelper = new BackgroundTaskHelper(GetSessions);
+            _sessionService = new SessionService();
         }
 
         #endregion
@@ -147,8 +160,8 @@ namespace AtlantaCodeCampMobile.ViewModels.Catalog
         /// <summary>
         /// Gets or sets the property that has been bound with a list view, which displays the item details in tile.
         /// </summary>
-        [DataMember(Name = "products")]
-        public ObservableCollection<Product> Products
+        [DataMember(Name = "sessions")]
+        public ObservableCollection<SessionViewModel> Sessions
         {
             get; set;
         }
@@ -325,6 +338,38 @@ namespace AtlantaCodeCampMobile.ViewModels.Catalog
         private void CartClicked(object obj)
         {
             // Do something
+        }
+
+        private async Task GetSessions()
+        {
+            try
+            {
+                var talkDtOs = await _sessionService.GetTalkDTOs();
+                Sessions.Clear();
+                foreach (var talkDtO in talkDtOs)
+                {
+                    Sessions.Add(new SessionViewModel(talkDtO));
+                }
+            }
+            catch (Exception e)
+            {
+            }
+        }
+
+        
+        internal override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (!Sessions.Any() && _backgroundTaskHelper.BackgroundTaskIsCompleted())
+            {
+                _backgroundTaskHelper.StartBackgroundTask();
+            }
+        }
+
+        internal override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            _backgroundTaskHelper.Cancel();
         }
 
         #endregion

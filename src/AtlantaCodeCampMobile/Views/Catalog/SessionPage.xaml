@@ -14,6 +14,7 @@
     xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
     xmlns:template="clr-namespace:AtlantaCodeCampMobile.Views.Templates"
     xmlns:catalog="clr-namespace:AtlantaCodeCampMobile.ViewModels.Catalog;assembly=AtlantaCodeCampMobile"
+    xmlns:dataSource="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
     x:Name="sessionListPage"
     Title="{Binding Title}"
     Shell.NavBarIsVisible="False"
@@ -52,7 +53,7 @@
                 IsStickyHeader="False"
                 ItemSize="170"
                 ItemSpacing="8,8,0,8"
-                ItemsSource="{Binding Products}"
+                ItemsSource="{Binding Sessions}"
                 Style="{StaticResource SfListViewStyle}">
 
                 <listView:SfListView.Behaviors>
@@ -64,9 +65,14 @@
                         <template:SessionListTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference sessionListPage}}" />
                     </DataTemplate>
                 </listView:SfListView.ItemTemplate>
-
+                <listView:SfListView.DataSource>
+                    <dataSource:DataSource>
+                        <dataSource:DataSource.GroupDescriptors>
+                            <dataSource:GroupDescriptor PropertyName="Category" />
+                        </dataSource:DataSource.GroupDescriptors>
+                    </dataSource:DataSource>
+                </listView:SfListView.DataSource>
             </listView:SfListView>
-
         </Grid>
 
     </ContentPage.Content>

@@ -26,6 +26,16 @@ namespace AtlantaCodeCampMobile.ViewModels
 
         #region Methods
 
+        internal virtual void OnAppearing()
+        {
+            
+        }
+
+        internal virtual void OnDisappearing()
+        {
+            
+        }
+
         /// <summary>
         /// The PropertyChanged event occurs when changing the value of property.
         /// </summary>

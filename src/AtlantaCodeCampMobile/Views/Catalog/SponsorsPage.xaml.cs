@@ -1,20 +1,20 @@
-using AtlantaCodeCampMobile.ViewModels;
+﻿using AtlantaCodeCampMobile.ViewModels;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace AtlantaCodeCampMobile.Views.Catalog
 {
     /// <summary>
-    /// Page to show the catalog list. 
+    /// Page to list out article items.
     /// </summary>
     [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SessionPage
+    public partial class SponsorsPage
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SessionPage" /> class.
+        /// Initializes a new instance of the <see cref="ArticleListPage" /> class.
         /// </summary>
-        public SessionPage()
+        public SponsorsPage()
         {
             InitializeComponent();
         }
@@ -22,18 +22,18 @@ namespace AtlantaCodeCampMobile.Views.Catalog
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (BindingContext is BaseViewModel vm)
+            if (this.BindingContext is BaseViewModel vm)
             {
-                vm.OnAppearing();
+                vm?.OnAppearing();
             }
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            if (BindingContext is BaseViewModel vm)
+            if (this.BindingContext is BaseViewModel vm)
             {
-                vm.OnDisappearing();
+                vm?.OnDisappearing();
             }
         }
     }
