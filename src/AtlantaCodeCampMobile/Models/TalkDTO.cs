@@ -106,7 +106,7 @@ namespace AtlantaCodeCampMobile.Models
         public string PhoneNumber { get; set; }
 
         [JsonProperty("tShirtSize")]
-        public TShirtSize? TShirtSize { get; set; }
+        public TShirtSize TShirtSize { get; set; }
 
         [JsonProperty("id")]
         public long Id { get; set; }
@@ -133,11 +133,16 @@ namespace AtlantaCodeCampMobile.Models
     {
         public static List<TalkDTO> FromJson(string json) => JsonConvert.DeserializeObject<List<TalkDTO>>(json, Converter.Settings);
     }
+    
+    public partial class Speaker
+    {
+        public static List<Speaker> FromJson(string json) => JsonConvert.DeserializeObject<List<Speaker>>(json, Converter.Settings);
+    }
 
     public static class Serialize
     {
         public static string ToJson(this List<TalkDTO> self) => JsonConvert.SerializeObject(self, Converter.Settings);
-        public static string ToJson(this List<Speaker> self) => JsonConvert.SerializeObject(self, AtlantaCodeCampMobile.Models.Converter.Settings);
+        public static string ToJson(this List<Speaker> self) => JsonConvert.SerializeObject(self, Converter.Settings);
     }
 
     internal static class Converter

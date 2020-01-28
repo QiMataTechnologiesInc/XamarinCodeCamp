@@ -33,7 +33,7 @@
             <ShellContent  ContentTemplate="{DataTemplate catalog:SponsorsPage}" />
         </Tab>
         <Tab Title="Speakers">
-            <ShellContent  ContentTemplate="{DataTemplate catalog:ArticleListPage}" />
+            <ShellContent  ContentTemplate="{DataTemplate catalog:SpeakersPage}" />
         </Tab>
         <Tab Title="Schedule">
             <ShellContent  ContentTemplate="{DataTemplate catalog:CatalogListPage}" />

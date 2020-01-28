@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using AtlantaCodeCampMobile.Helpers;
+using AtlantaCodeCampMobile.Models;
 using AtlantaCodeCampMobile.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -17,17 +18,17 @@ namespace AtlantaCodeCampMobile.ViewModels.Catalog
     /// ViewModel for article list page.
     /// </summary> 
     [Preserve(AllMembers = true)]
-    public class SponsorsViewModel : BaseViewModel
+    public class SpeakersViewModel : BaseViewModel
     {
         #region Fields
 
-        private ObservableCollection<SponsorViewModel> featuredStories;
+        private ObservableCollection<Speaker> featuredStories;
 
-        private ObservableCollection<SponsorViewModel> latestStories;
-        
+        private ObservableCollection<Speaker> latestStories;
+
+        private SpeakerService _speakerService;
+
         private BackgroundTaskHelper _backgroundTaskHelper;
-
-        private SponsorService _sponsorService;
 
         #endregion
 
@@ -35,13 +36,12 @@ namespace AtlantaCodeCampMobile.ViewModels.Catalog
         /// <summary>
         /// Initializes a new instance for the <see cref="ArticleListViewModel" /> class.
         /// </summary>
-        public SponsorsViewModel()
+        public SpeakersViewModel()
         {
-            FeaturedStories = new ObservableCollection<SponsorViewModel>();
-            LatestStories = new ObservableCollection<SponsorViewModel>();
-            _sponsorService = new SponsorService();
-            _backgroundTaskHelper = new BackgroundTaskHelper(GetSponsors);
-            
+            FeaturedStories = new ObservableCollection<Speaker>();
+            LatestStories = new ObservableCollection<Speaker>();
+            _speakerService = new SpeakerService();
+            _backgroundTaskHelper = new BackgroundTaskHelper(GetSpeakers);
             this.MenuCommand = new Command(this.MenuClicked);
             this.BookmarkCommand = new Command(this.BookmarkButtonClicked);
             this.FeatureStoriesCommand = new Command(this.FeatureStoriesClicked);
@@ -50,12 +50,10 @@ namespace AtlantaCodeCampMobile.ViewModels.Catalog
         #endregion
 
         #region Public Properties
-
-        public string Title => "Sponsors";
         /// <summary>
         /// Gets or sets the property that has been bound with the rotator view, which displays the articles featured stories items.
         /// </summary>
-        public ObservableCollection<SponsorViewModel> FeaturedStories
+        public ObservableCollection<Speaker> FeaturedStories
         {
             get
             {
@@ -77,7 +75,7 @@ namespace AtlantaCodeCampMobile.ViewModels.Catalog
         /// <summary>
         /// Gets or sets the property that has been bound with the list view, which displays the articles latest stories items.
         /// </summary>
-        public ObservableCollection<SponsorViewModel> LatestStories
+        public ObservableCollection<Speaker> LatestStories
         {
             get
             {
@@ -159,27 +157,27 @@ namespace AtlantaCodeCampMobile.ViewModels.Catalog
         /// <param name="obj">The Object</param>
         private void ItemSelected(object obj)
         {
-            if (obj is SponsorViewModel vm)
-            {
-                Xamarin.Essentials.Launcher.OpenAsync(vm.Sponsor.Link);
-            }
+            // Do something
         }
 
-        private async Task GetSponsors()
+        private async Task GetSpeakers()
         {
             try
             {
-                var talkDtOs = await _sponsorService.GetSponsorsAsync(CancellationToken.None);
+                var speakerDtos = (await _speakerService.GetSpeakersAsync()).ToList();
                 LatestStories.Clear();
                 FeaturedStories.Clear();
-                foreach (var talkDtO in talkDtOs)
+
+                var featuredSpeakers = speakerDtos.OrderBy(x => Guid.NewGuid()).Take(5);
+
+                foreach (var speaker in featuredSpeakers)
                 {
-                    var sponsorViewModel = new SponsorViewModel(talkDtO);
-                    LatestStories.Add(sponsorViewModel);
-                    if (talkDtO.SponsorLevel != "Gold" && talkDtO.SponsorLevel != "Silver")
-                    {
-                        FeaturedStories.Add(sponsorViewModel);
-                    }
+                    featuredStories.Add(speaker);
+                }
+
+                foreach (var speaker in speakerDtos)
+                {
+                    LatestStories.Add(speaker);
                 }
             }
             catch (Exception e)
@@ -187,7 +185,6 @@ namespace AtlantaCodeCampMobile.ViewModels.Catalog
             }
         }
 
-        
         internal override void OnAppearing()
         {
             base.OnAppearing();

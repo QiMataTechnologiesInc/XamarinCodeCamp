@@ -103,7 +103,6 @@
         </e>
         <e p="Product.cs" t="Include" />
         <e p="Review.cs" t="Include" />
-        <e p="SpeakerDTO.cs" t="Include" />
         <e p="SponsorDTO.cs" t="Include" />
         <e p="TalkDTO.cs" t="Include" />
       </e>
@@ -129,6 +128,7 @@
                 <e p="CatalogListPage.xaml.g.cs" t="Include" />
                 <e p="CatalogTilePage.xaml.g.cs" t="Include" />
                 <e p="SessionPage.xaml.g.cs" t="Include" />
+                <e p="SponsorsPage.xaml.g.cs" t="Include" />
                 <e p="Styles.xaml.g.cs" t="Include" />
               </e>
               <e p="ContactUs" t="Include">
@@ -153,6 +153,7 @@
                 <e p="ProductTileTemplate.xaml.g.cs" t="Include" />
                 <e p="ReviewTemplate.xaml.g.cs" t="Include" />
                 <e p="SessionListTemplate.xaml.g.cs" t="Include" />
+                <e p="SponsorListTemplate.xaml.g.cs" t="Include" />
                 <e p="Styles.xaml.g.cs" t="Include" />
               </e>
             </e>
@@ -187,6 +188,7 @@
           <e p="RotatorImageViewModel.cs" t="Include" />
           <e p="SessionPageViewModel.cs" t="Include" />
           <e p="SessionViewModel.cs" t="Include" />
+          <e p="SpeakersViewModel.cs" t="Include" />
           <e p="SponsorsViewModel.cs" t="Include" />
           <e p="SponsorViewModel.cs" t="Include" />
         </e>
@@ -226,6 +228,8 @@
           <e p="CatalogTilePage.xaml.cs" t="Include" />
           <e p="SessionPage.xaml" t="Include" />
           <e p="SessionPage.xaml.cs" t="Include" />
+          <e p="SpeakersPage.xaml" t="Include" />
+          <e p="SpeakersPage.xaml.cs" t="Include" />
           <e p="SponsorsPage.xaml" t="Include" />
           <e p="SponsorsPage.xaml.cs" t="Include" />
           <e p="Styles.xaml" t="Include" />
@@ -266,6 +270,10 @@
           <e p="ReviewTemplate.xaml.cs" t="Include" />
           <e p="SessionListTemplate.xaml" t="Include" />
           <e p="SessionListTemplate.xaml.cs" t="Include" />
+          <e p="SpeakerListTemplate.xaml" t="Include" />
+          <e p="SpeakerListTemplate.xaml.cs" t="Include" />
+          <e p="SponsorListTemplate.xaml" t="Include" />
+          <e p="SponsorListTemplate.xaml.cs" t="Include" />
           <e p="Styles.xaml" t="Include" />
           <e p="Styles.xaml.cs" t="Include" />
         </e>

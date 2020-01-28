@@ -12,6 +12,8 @@ namespace AtlantaCodeCampMobile.ViewModels.Catalog
             _sponsor = sponsor;
         }
 
+        public Sponsor Sponsor => _sponsor;
+
         public Uri ImagePath => _sponsor.ImageUrl;
 
         public string Name => _sponsor.Name;
