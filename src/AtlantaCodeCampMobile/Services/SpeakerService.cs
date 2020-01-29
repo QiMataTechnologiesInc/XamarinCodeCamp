@@ -8,12 +8,9 @@ namespace AtlantaCodeCampMobile.Services
 {
     public class SpeakerService : BaseService
     {
-        public SpeakerService()
-        {
-        }
-
         public async Task<IEnumerable<Speaker>> GetSpeakersAsync()
         {
+            ThrowIfNoInternet();
             return Speaker.FromJson(await Client.GetStringAsync(BaseUrl + "api/speakers/"));
         }
     }

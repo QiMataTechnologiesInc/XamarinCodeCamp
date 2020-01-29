@@ -9,6 +9,7 @@ namespace AtlantaCodeCampMobile.Services
     {
         public async Task<IEnumerable<Sponsor>> GetSponsorsAsync(CancellationToken cancellationToken)
         {
+            ThrowIfNoInternet();
             return Sponsor.FromJson(await Client.GetStringAsync(BaseUrl + "api/sponsors/"));
         }
     }

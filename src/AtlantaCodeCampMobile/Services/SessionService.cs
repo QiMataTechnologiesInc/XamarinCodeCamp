@@ -1,17 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using AtlantaCodeCampMobile.Models;
 using Newtonsoft.Json;
 
 namespace AtlantaCodeCampMobile.Services
 {
-    public class SessionService : BaseService
+    public class SessionService : CachedService<TalkDTO>
     {
-
-        public async Task<IEnumerable<TalkDTO>> GetTalkDTOs()
+        protected override Task<bool> CheckForUpdateAsync(CancellationToken cancellationToken)
         {
-            var response = await Client.GetAsync(BaseUrl + "api/talks/");
+            throw new NotImplementedException();
+        }
+
+        protected override async Task<IEnumerable<TalkDTO>> GetFromServerAsync(CancellationToken cancellationToken)
+        {
+            ThrowIfNoInternet();
+            
+            var response = await Client.GetAsync(BaseUrl + "api/talks/", cancellationToken);
 
             response.EnsureSuccessStatusCode();
 

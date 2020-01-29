@@ -128,6 +128,7 @@
                 <e p="CatalogListPage.xaml.g.cs" t="Include" />
                 <e p="CatalogTilePage.xaml.g.cs" t="Include" />
                 <e p="SessionPage.xaml.g.cs" t="Include" />
+                <e p="SpeakersPage.xaml.g.cs" t="Include" />
                 <e p="SponsorsPage.xaml.g.cs" t="Include" />
                 <e p="Styles.xaml.g.cs" t="Include" />
               </e>
@@ -153,6 +154,7 @@
                 <e p="ProductTileTemplate.xaml.g.cs" t="Include" />
                 <e p="ReviewTemplate.xaml.g.cs" t="Include" />
                 <e p="SessionListTemplate.xaml.g.cs" t="Include" />
+                <e p="SpeakerListTemplate.xaml.g.cs" t="Include" />
                 <e p="SponsorListTemplate.xaml.g.cs" t="Include" />
                 <e p="Styles.xaml.g.cs" t="Include" />
               </e>
@@ -164,6 +166,10 @@
       <e p="Services" t="Include">
         <e p="AuthenticationService.cs" t="Include" />
         <e p="BaseService.cs" t="Include" />
+        <e p="CachedService.cs" t="Include" />
+        <e p="Exceptions" t="Include">
+          <e p="NetworkConnectivityException.cs" t="Include" />
+        </e>
         <e p="SessionService.cs" t="Include" />
         <e p="SpeakerService.cs" t="Include" />
         <e p="SponsorService.cs" t="Include" />
